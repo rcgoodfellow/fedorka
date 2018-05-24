@@ -13,7 +13,8 @@ RUN dnf install -y \
   diffutils \
   patch \
   rpmdevtools \
-  curl
+  curl \
+  git
 
 RUN dnf install -y \
   boost-devel \
@@ -24,13 +25,19 @@ RUN dnf install -y \
   gcc-c++ \
   automake \
   libtool \
-  mariadb-devel
+  mariadb-devel \
+  mariadb-connector-c-devel \
+  procps-ng \
+  valgrind-devel
 
 RUN mkdir -p /root/rpmbuild/{SPECS,SOURCES}
 WORKDIR /root/rpmbuild/SOURCES
-RUN curl -JLO https://www.isc.org/downloads/file/kea-1-4-0-beta/?version=tar-gz
+RUN curl -JLO https://ftp.isc.org/isc/kea/1.3.0/kea-1.3.0.tar.gz
 
-COPY ./kea.spec /root/rpmbuild/SPECS/kea.spec
+WORKDIR /tmp
+RUN git clone https://src.fedoraproject.org/git/rpms/kea.git
+RUN cp kea/kea.spec /root/rpmbuild/SPECS/
+RUN cp kea/*.patch /root/rpmbuild/SOURCES/
 
 WORKDIR /root/rpmbuild/SPECS
 RUN rpmbuild -vv -ba kea.spec
