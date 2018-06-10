@@ -38,7 +38,7 @@ WORKDIR /tmp
 RUN git clone https://src.fedoraproject.org/git/rpms/firewalld.git
 WORKDIR /tmp/firewalld
 RUN git checkout a86d697d59d08a5f42f3eebbd2194f747f87c384
-workdir /tmp
+WORKDIR /tmp
 RUN cp firewalld/firewalld.spec /root/rpmbuild/SPECS/
 RUN cp firewalld/*.patch /root/rpmbuild/SOURCES/
 RUN cp firewalld/*.xml /root/rpmbuild/SOURCES/
