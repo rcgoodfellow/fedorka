@@ -35,7 +35,6 @@ WORKDIR /root/rpmbuild/SOURCES
 RUN curl -JLO https://github.com/firewalld/firewalld/archive/v0.5.2.tar.gz
 
 WORKDIR /tmp
-#RUN git clone https://src.fedoraproject.org/git/rpms/kea.git
 RUN git clone https://src.fedoraproject.org/git/rpms/firewalld.git
 WORKDIR /tmp/firewalld
 RUN git checkout a86d697d59d08a5f42f3eebbd2194f747f87c384
