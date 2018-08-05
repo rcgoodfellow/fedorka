@@ -38,7 +38,7 @@ RUN curl -JLO https://ftp.isc.org/isc/kea/1.3.0/kea-1.3.0.tar.gz
 
 WORKDIR /tmp
 #RUN git clone https://src.fedoraproject.org/git/rpms/kea.git
-RUN git clone https://github.com/rcgoodfellow/fedora-kea.git kea
+RUN git clone --branch v1.3 https://github.com/rcgoodfellow/fedora-kea.git kea
 RUN cp kea/kea.spec /root/rpmbuild/SPECS/
 RUN cp kea/*.patch /root/rpmbuild/SOURCES/
 
