@@ -1,5 +1,5 @@
 Name:	    grpc-devel	
-Version:  1.14.1
+Version:  2.0.0
 Release:	1%{?dist}
 Summary:	An RPC library and framework
 
@@ -15,19 +15,19 @@ framework that can run anywhere. It enables client and server applications to
 communicate transparently, and makes it easier to build connected systems.
 
 %prep
-if [[ ! -d grpc-devel-1.14.1 ]]; then
-  git clone -b v1.14.1 https://github.com/grpc/grpc grpc-devel-1.14.1
+if [[ ! -d grpc-devel-2.0.0 ]]; then
+  git clone -b master https://github.com/grpc/grpc grpc-devel-2.0.0
 fi
 
 %build
-cd grpc-devel-1.14.1
+cd grpc-devel-2.0.0
 git submodule update --init
 export CC=clang
 export CXX=clang++
 make %{?_smp_mflags}
 
 %install
-cd grpc-devel-1.14.1
+cd grpc-devel-2.0.0
 export prefix=%{buildroot}
 make install
 
@@ -256,57 +256,65 @@ make install
 /include/grpcpp/support/stub_options.h
 /include/grpcpp/support/sync_stream.h
 /include/grpcpp/support/time.h
+/include/grpcpp/ext/channelz_service_plugin.h
 /lib/libaddress_sorting.a
 /lib/libaddress_sorting.so
 /lib/libaddress_sorting.so.6
-/lib/libaddress_sorting.so.6.0.0
 /lib/libgpr.a
 /lib/libgpr.so
 /lib/libgpr.so.6
-/lib/libgpr.so.6.0.0
 /lib/libgrpc++.a
 /lib/libgrpc++.so
 /lib/libgrpc++.so.1
-/lib/libgrpc++.so.1.14.1
 /lib/libgrpc++.so.6
 /lib/libgrpc++_cronet.a
 /lib/libgrpc++_cronet.so
 /lib/libgrpc++_cronet.so.1
-/lib/libgrpc++_cronet.so.1.14.1
 /lib/libgrpc++_cronet.so.6
 /lib/libgrpc++_error_details.a
 /lib/libgrpc++_error_details.so
 /lib/libgrpc++_error_details.so.1
-/lib/libgrpc++_error_details.so.1.14.1
 /lib/libgrpc++_error_details.so.6
 /lib/libgrpc++_reflection.a
 /lib/libgrpc++_reflection.so
 /lib/libgrpc++_reflection.so.1
-/lib/libgrpc++_reflection.so.1.14.1
 /lib/libgrpc++_reflection.so.6
 /lib/libgrpc++_unsecure.a
 /lib/libgrpc++_unsecure.so
 /lib/libgrpc++_unsecure.so.1
-/lib/libgrpc++_unsecure.so.1.14.1
 /lib/libgrpc++_unsecure.so.6
 /lib/libgrpc.a
 /lib/libgrpc.so
 /lib/libgrpc.so.6
-/lib/libgrpc.so.6.0.0
 /lib/libgrpc_cronet.a
 /lib/libgrpc_cronet.so
 /lib/libgrpc_cronet.so.6
-/lib/libgrpc_cronet.so.6.0.0
 /lib/libgrpc_unsecure.a
 /lib/libgrpc_unsecure.so
 /lib/libgrpc_unsecure.so.6
-/lib/libgrpc_unsecure.so.6.0.0
 /lib/pkgconfig/grpc++.pc
 /lib/pkgconfig/grpc++_unsecure.pc
 /lib/pkgconfig/grpc.pc
 /lib/pkgconfig/grpc_unsecure.pc
+/lib/libaddress_sorting.so.6.0.0-dev
+/lib/libgpr.so.6.0.0-dev
+/lib/libgrpc++.so.1.15.0-dev
+/lib/libgrpc++_cronet.so.1.15.0-dev
+/lib/libgrpc++_error_details.so.1.15.0-dev
+/lib/libgrpc++_reflection.so.1.15.0-dev
+/lib/libgrpc++_unsecure.so.1.15.0-dev
+/lib/libgrpc.so.6.0.0-dev
+/lib/libgrpc_cronet.so.6.0.0-dev
+/lib/libgrpc_unsecure.so.6.0.0-dev
+/lib/libgrpcpp_channelz.a
+/lib/libgrpcpp_channelz.so
+/lib/libgrpcpp_channelz.so.1
+/lib/libgrpcpp_channelz.so.1.15.0-dev
+/lib/libgrpcpp_channelz.so.6
+/lib/pkgconfig/gpr.pc
 /share/grpc/roots.pem
 
+
 %changelog
-* Thu Aug 16 2018 Ryan Goodfellow <rgoodfel@isi.edu> - 1.14.1-0
+* Thu Aug 16 2018 Ryan Goodfellow <rgoodfel@isi.edu> - 2.0.0-0
 - Initial
